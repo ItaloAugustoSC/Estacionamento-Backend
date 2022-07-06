@@ -1,5 +1,5 @@
 /*
- * Acesso.
+ * AcessoResponse.
  *
  * @author isantos2
  * @version 1
@@ -11,43 +11,29 @@
  * permission of LifeScan IP Holdings, LLC.
  */
 
-package com.group.estacionamento.entitys;
+package com.group.estacionamento.model.responses;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import java.time.LocalDateTime;
 import java.util.Date;
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-@Table(name = "acesso")
-@Entity
 @Data
 @Builder
-@AllArgsConstructor
-@NoArgsConstructor
-public class Acesso {
+public class AcessoResponse {
 
-  @Column
-  private Date hr_entrada;
+  private String hrEntrada;
 
-  @Column
-  private Date hr_saida;
+  private String hr_saida;
 
-  @Column
-  private boolean status_pagamento;
+  private char status_pagamento;
 
-  @Column
-  private String placa_carro;
+  private String placaCarro;
 
-  @Column
   private String modalidade_plano;
 
-  @Id
-  @Column
   private int id_funcionario;
-
 }

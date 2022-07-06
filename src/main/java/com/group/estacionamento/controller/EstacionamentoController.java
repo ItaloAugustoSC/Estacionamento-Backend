@@ -15,12 +15,17 @@ package com.group.estacionamento.controller;
 
 import com.group.estacionamento.controller.apiInterface.EstacionamentoApi;
 import com.group.estacionamento.model.ClienteResponse;
+import com.group.estacionamento.model.requests.AcessoRequest;
 import com.group.estacionamento.model.requests.CarroRequest;
 import com.group.estacionamento.model.requests.ClienteRequest;
+import com.group.estacionamento.model.requests.FuncionarioRequest;
 import com.group.estacionamento.model.requests.PlanoRequest;
+import com.group.estacionamento.model.responses.AcessoResponse;
 import com.group.estacionamento.model.responses.CarroResponse;
+import com.group.estacionamento.model.responses.FuncionarioResponse;
 import com.group.estacionamento.model.responses.PlanoResponse;
 import com.group.estacionamento.service.EstacionamentoService;
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -103,12 +108,45 @@ public class EstacionamentoController implements EstacionamentoApi {
   }
 
   //FUNCIONARIO
+  @Override
+  @GetMapping(path = "/allEmployees", produces = "application/json")
+  @ResponseStatus(HttpStatus.OK)
+  public List<FuncionarioResponse> getAllEmployees() {
+    return estacionamentoService.getFuncionarios();
+  }
 
+  @Override
+  @PostMapping(path = "/createEmployee", produces = "application/json")
+  @ResponseStatus(HttpStatus.OK)
+  public void createNewEmployee(FuncionarioRequest funcionarioRequest) throws Exception {
+    estacionamentoService.createFuncionario(funcionarioRequest);
+  }
 
+  @Override
+  @DeleteMapping(path ="/removeEmployee", produces ="application/json")
+  @ResponseStatus(HttpStatus.OK)
+  public void removeEmployee(int id) throws Exception {
+    estacionamentoService.removeFuncionario(id);
+  }
 
   //ACESSO
+  @Override
+  @GetMapping(path = "/allAccess", produces = "application/json")
+  @ResponseStatus(HttpStatus.OK)
+  public List<AcessoResponse> getAllAccess() {
+    return estacionamentoService.getAcessos();
+  }
 
+  @Override
+  @PostMapping(path = "/createAccess", produces = "application/json")
+  @ResponseStatus(HttpStatus.OK)
+  public void createNewAccess(AcessoRequest acessoRequest) throws Exception {
+    estacionamentoService.createAcesso(acessoRequest);
+  }
 
-
+  @Override
+  public void removeAccess( String placa_carro) throws Exception {
+    estacionamentoService.removeAcesso( placa_carro);
+  }
 
 }

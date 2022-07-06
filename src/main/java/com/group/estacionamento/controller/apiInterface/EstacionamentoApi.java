@@ -14,15 +14,20 @@
 package com.group.estacionamento.controller.apiInterface;
 
 import com.group.estacionamento.model.ClienteResponse;
+import com.group.estacionamento.model.requests.AcessoRequest;
 import com.group.estacionamento.model.requests.CarroRequest;
 import com.group.estacionamento.model.requests.ClienteRequest;
+import com.group.estacionamento.model.requests.FuncionarioRequest;
 import com.group.estacionamento.model.requests.PlanoRequest;
+import com.group.estacionamento.model.responses.AcessoResponse;
 import com.group.estacionamento.model.responses.CarroResponse;
+import com.group.estacionamento.model.responses.FuncionarioResponse;
 import com.group.estacionamento.model.responses.PlanoResponse;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+import java.util.Date;
 import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -112,5 +117,59 @@ public interface EstacionamentoApi {
       @ApiResponse(code = 500, message = "Internal Server Failure")
   })
   void removePlan(String modalidade) throws Exception;
+
+  @ApiOperation(value = "Returning employees")
+  @ApiResponses({
+      @ApiResponse(code = 200, message = "Success"),
+      @ApiResponse(code = 400, message = "Bad request"),
+      @ApiResponse(code = 401, message = "Unauthorized"),
+      @ApiResponse(code = 500, message = "Internal Server Failure")
+  })
+  List<FuncionarioResponse> getAllEmployees();
+
+  @ApiOperation(value = "Creating new employee")
+  @ApiResponses({
+      @ApiResponse(code = 200, message = "Success"),
+      @ApiResponse(code = 400, message = "Bad request"),
+      @ApiResponse(code = 401, message = "Unauthorized"),
+      @ApiResponse(code = 500, message = "Internal Server Failure")
+  })
+  void createNewEmployee(FuncionarioRequest funcionarioRequest) throws Exception;
+
+  @ApiOperation(value = "Removing an employee")
+  @ApiResponses({
+      @ApiResponse(code = 200, message = "Success"),
+      @ApiResponse(code = 400, message = "Bad request"),
+      @ApiResponse(code = 401, message = "Unauthorized"),
+      @ApiResponse(code = 500, message = "Internal Server Failure")
+  })
+  void removeEmployee(int id) throws Exception;
+
+  @ApiOperation(value = "Returning access")
+  @ApiResponses({
+      @ApiResponse(code = 200, message = "Success"),
+      @ApiResponse(code = 400, message = "Bad request"),
+      @ApiResponse(code = 401, message = "Unauthorized"),
+      @ApiResponse(code = 500, message = "Internal Server Failure")
+  })
+  List<AcessoResponse> getAllAccess();
+
+  @ApiOperation(value = "Creating new access")
+  @ApiResponses({
+      @ApiResponse(code = 200, message = "Success"),
+      @ApiResponse(code = 400, message = "Bad request"),
+      @ApiResponse(code = 401, message = "Unauthorized"),
+      @ApiResponse(code = 500, message = "Internal Server Failure")
+  })
+  void createNewAccess(AcessoRequest acessoRequest) throws Exception;
+
+  @ApiOperation(value = "Removing an access")
+  @ApiResponses({
+      @ApiResponse(code = 200, message = "Success"),
+      @ApiResponse(code = 400, message = "Bad request"),
+      @ApiResponse(code = 401, message = "Unauthorized"),
+      @ApiResponse(code = 500, message = "Internal Server Failure")
+  })
+  void removeAccess( String placa_carro) throws Exception;
 
 }
