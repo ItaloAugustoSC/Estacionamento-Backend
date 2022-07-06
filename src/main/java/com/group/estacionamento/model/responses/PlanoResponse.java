@@ -1,5 +1,5 @@
 /*
- * Plano.
+ * PlanoResponse.
  *
  * @author isantos2
  * @version 1
@@ -11,34 +11,20 @@
  * permission of LifeScan IP Holdings, LLC.
  */
 
-package com.group.estacionamento.entitys;
+package com.group.estacionamento.model.responses;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-@Table(name = "plano")
-@Entity
 @Data
 @Builder
-@AllArgsConstructor
-@NoArgsConstructor
-public class Plano {
+public class PlanoResponse {
 
- @Column
- private int valor_hora;
+  private float valor_hora;
 
-  @Id
-  @Column
   private String modalidade;
 
-  @Column
   private String tempo;
-
-
 }

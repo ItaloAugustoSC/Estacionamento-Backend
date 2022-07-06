@@ -1,5 +1,5 @@
 /*
- * Carro.
+ * Plano.
  *
  * @author isantos2
  * @version 1
@@ -22,25 +22,23 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Table(name = "carro")
+@Table(name = "plano")
 @Entity
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Carro {
+public class PlanoEntity {
+
+ @Column
+ private float valor_hora;
 
   @Id
   @Column
-  private String placa;
+  private String modalidade;
 
   @Column
-  private char chave_no_local;
+  private String tempo;
 
-  @Column
-  private long cpf_cliente;
-
-  @Column
-  private String plano_modalidade;
 
 }

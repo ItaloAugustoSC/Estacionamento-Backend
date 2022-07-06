@@ -13,15 +13,38 @@
 
 package com.group.estacionamento.service.mappers;
 
+import com.group.estacionamento.entitys.CarroEntity;
 import com.group.estacionamento.entitys.ClienteEntity;
+import com.group.estacionamento.entitys.PlanoEntity;
 import com.group.estacionamento.model.ClienteResponse;
+import com.group.estacionamento.model.requests.CarroRequest;
 import com.group.estacionamento.model.requests.ClienteRequest;
+import com.group.estacionamento.model.requests.PlanoRequest;
+import com.group.estacionamento.model.responses.CarroResponse;
+import com.group.estacionamento.model.responses.PlanoResponse;
 import java.util.List;
 import org.mapstruct.Mapper;
 
 @Mapper
 public interface EstacionamentoMapper {
 
-  List<ClienteResponse> clienteMapper(List<ClienteEntity> clienteResponse);
+  //Cliente
+  List<ClienteResponse> clienteMapper(List<ClienteEntity> clienteEntities);
   ClienteEntity cliReqToEnt(ClienteRequest clienteRequest);
+
+  //Carro
+  List<CarroResponse> carroMapper(List<CarroEntity> carroEntities);
+  CarroEntity carReqToEnt(CarroRequest carroRequest);
+
+  //Plano
+  List<PlanoResponse> planoMapper(List<PlanoEntity> planoEntities);
+  PlanoEntity planReqToEnt(PlanoRequest planoRequest);
+
+
+  //Funcionario
+
+
+  //Acesso
+
+
 }

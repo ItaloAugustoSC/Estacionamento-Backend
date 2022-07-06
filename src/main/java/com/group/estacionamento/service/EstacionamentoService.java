@@ -14,7 +14,11 @@
 package com.group.estacionamento.service;
 
 import com.group.estacionamento.model.ClienteResponse;
+import com.group.estacionamento.model.requests.CarroRequest;
 import com.group.estacionamento.model.requests.ClienteRequest;
+import com.group.estacionamento.model.requests.PlanoRequest;
+import com.group.estacionamento.model.responses.CarroResponse;
+import com.group.estacionamento.model.responses.PlanoResponse;
 import java.util.List;
 
 public interface EstacionamentoService {
@@ -23,5 +27,15 @@ public interface EstacionamentoService {
   void createClient(ClienteRequest clienteRequest) throws Exception;
 
   void removeClient(String cpf) throws Exception;
+
+  List<CarroResponse> getCarros();
+  void createCarro(CarroRequest carroRequest) throws Exception;
+
+  void removeCarro(String placa) throws Exception;
+
+  List<PlanoResponse> getPlanos();
+  void createPlano(PlanoRequest planoRequest) throws Exception;
+
+  void removePlano(String modalidade) throws Exception;
 
 }

@@ -14,7 +14,11 @@
 package com.group.estacionamento.controller.apiInterface;
 
 import com.group.estacionamento.model.ClienteResponse;
+import com.group.estacionamento.model.requests.CarroRequest;
 import com.group.estacionamento.model.requests.ClienteRequest;
+import com.group.estacionamento.model.requests.PlanoRequest;
+import com.group.estacionamento.model.responses.CarroResponse;
+import com.group.estacionamento.model.responses.PlanoResponse;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -33,7 +37,7 @@ public interface EstacionamentoApi {
       @ApiResponse(code = 401, message = "Unauthorized"),
       @ApiResponse(code = 500, message = "Internal Server Failure")
   })
-  List<ClienteResponse> getAllClientes();
+  List<ClienteResponse> getAllClients();
 
   @ApiOperation(value = "Creating new client")
   @ApiResponses({
@@ -52,5 +56,61 @@ public interface EstacionamentoApi {
       @ApiResponse(code = 500, message = "Internal Server Failure")
   })
   void removeClient(String cpf) throws Exception;
+
+
+  @ApiOperation(value = "Returning cars")
+  @ApiResponses({
+      @ApiResponse(code = 200, message = "Success"),
+      @ApiResponse(code = 400, message = "Bad request"),
+      @ApiResponse(code = 401, message = "Unauthorized"),
+      @ApiResponse(code = 500, message = "Internal Server Failure")
+  })
+  List<CarroResponse> getAllCars();
+
+  @ApiOperation(value = "Creating new car")
+  @ApiResponses({
+      @ApiResponse(code = 200, message = "Success"),
+      @ApiResponse(code = 400, message = "Bad request"),
+      @ApiResponse(code = 401, message = "Unauthorized"),
+      @ApiResponse(code = 500, message = "Internal Server Failure")
+  })
+  void createNewCar(CarroRequest carroRequest) throws Exception;
+
+  @ApiOperation(value = "Removing a car")
+  @ApiResponses({
+      @ApiResponse(code = 200, message = "Success"),
+      @ApiResponse(code = 400, message = "Bad request"),
+      @ApiResponse(code = 401, message = "Unauthorized"),
+      @ApiResponse(code = 500, message = "Internal Server Failure")
+  })
+  void removeCar(String placa) throws Exception;
+
+
+  @ApiOperation(value = "Returning plans")
+  @ApiResponses({
+      @ApiResponse(code = 200, message = "Success"),
+      @ApiResponse(code = 400, message = "Bad request"),
+      @ApiResponse(code = 401, message = "Unauthorized"),
+      @ApiResponse(code = 500, message = "Internal Server Failure")
+  })
+  List<PlanoResponse> getAllPlans();
+
+  @ApiOperation(value = "Creating new plan")
+  @ApiResponses({
+      @ApiResponse(code = 200, message = "Success"),
+      @ApiResponse(code = 400, message = "Bad request"),
+      @ApiResponse(code = 401, message = "Unauthorized"),
+      @ApiResponse(code = 500, message = "Internal Server Failure")
+  })
+  void createNewPlan(PlanoRequest planoRequest) throws Exception;
+
+  @ApiOperation(value = "Removing a plan")
+  @ApiResponses({
+      @ApiResponse(code = 200, message = "Success"),
+      @ApiResponse(code = 400, message = "Bad request"),
+      @ApiResponse(code = 401, message = "Unauthorized"),
+      @ApiResponse(code = 500, message = "Internal Server Failure")
+  })
+  void removePlan(String modalidade) throws Exception;
 
 }
